@@ -1,2 +1,3 @@
 # Food-Ordering-System
-alpha
+
+Mini Project Using Php & MySQL as backend 
