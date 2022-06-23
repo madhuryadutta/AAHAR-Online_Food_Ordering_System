@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
     $item_desc = $_POST['item_desc'];
-    $sql = "INSERT INTO items ( item_id, item_name, item_price,item_desc) VALUES ('$item_id','$item_name','$item_price','$item_desc')";
+    $sql = "INSERT INTO `items`(`item_id`, `item_name`, `item_price`, `item_desc`, `cat_id`) VALUES ('$item_id','$item_name','$item_price','$item_desc','2')";
 
     $q = mysqli_query($con, $sql);
     if ($q > 0) {
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                                         <div class="col-md-12 mb-3">
                                             <label for="validationCustom12">Description</label>
                                             <div class="input-group">
-                                                <textarea rows="5" class="form-control" required type="text" id="item_desc" name="item_desc"></textarea>
+                                                <input class="form-control" required type="text" id="item_desc" name="item_desc">
                                                 <div class="invalid-feedback">
                                                     Please provide item Description
                                                 </div>

@@ -84,7 +84,7 @@ if (isset($_SESSION["admin"])) {
                     </li>
                     <li> <a href="view_category.php">View Category</a>
                     </li>
-                    
+
 
                 </ul>
             </li>
@@ -113,21 +113,21 @@ if (isset($_SESSION["admin"])) {
 
             <!-- Invoice -->
             <li class="menu-item">
-                <a href="pages/invoice/invoicelist.html" > <span><i class="fas fa-file-invoice fs-16"></i>Invoice </span>
+                <a href="pages/invoice/invoicelist.html"> <span><i class="fas fa-file-invoice fs-16"></i>Invoice </span>
                 </a>
-                
+
             </li>
             <!-- Invoice end -->
             <!-- customers-->
             <li class="menu-item">
-                <a href="view_customer.php" > <span><i class="fas fa-user-friends fs-16"></i>Customers </span>
+                <a href="view_customer.php"> <span><i class="fas fa-user-friends fs-16"></i>Customers </span>
                 </a>
-                
+
             </li>
             <!-- Customers  end -->
             <li>
                 <a class="media fs-14 p-4" href="../logout.php"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
-                            </a>
+                </a>
             </li>
         </ul>
     </aside>
@@ -158,7 +158,7 @@ if (isset($_SESSION["admin"])) {
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
                         <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="../logout.php"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
+                            <a class="media fs-14 p-2" href="../logout.php"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
                             </a>
                         </li>
                     </ul>
