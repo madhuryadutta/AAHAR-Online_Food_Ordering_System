@@ -25,6 +25,7 @@ if (isset($_SESSION["admin"])) {
                 <table class="table table-hover thead-primary">
                     <thead>
                         <tr>
+                            <th scope="col">Image</th>
                             <th scope="col">Items ID</th>
                             <th scope="col">Items Name</th>
                             <th scope="col">Items Description</th>
@@ -35,10 +36,11 @@ if (isset($_SESSION["admin"])) {
                     <tbody>
                         <?php
                         $i = 0;
-                        while ($row = mysqli_fetch_array($view_items)) {
+                        while ($row = mysqli_fetch_assoc($view_items)) {
 
                         ?>
                             <tr>
+                                <th><img src="../upload/<?php echo $row['image']; ?>"></th>    
                                 <th scope="row"><?php echo $row["item_id"]; ?></th>
                                 <td><?php echo $row["item_name"]; ?></td>
                                 <td> <?php echo $row["item_desc"]; ?></td>
