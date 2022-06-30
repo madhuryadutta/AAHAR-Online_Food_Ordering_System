@@ -1,0 +1,73 @@
+
+<?php
+include "dbcon.php";
+include "navbar.php";
+// include "footer.php";
+$show_items = mysqli_query($con, "SELECT * FROM `items`");
+?><?php
+if ($result->num_rows > 0) {
+	while ($row = $result->fetch_assoc()) {
+		echo $row["item_id"] . "  " . $row["item_name"] . "  " . $row["item_price"] . "  " . $row["item_desc"] . "<br>";
+	}
+} else {
+	echo "Item Not Found";
+}
+
+$con->close();
+?>
+
+<html>
+
+                            <tr>
+                                <th scope="row"><?php echo $row["cust_id"]; ?></th>
+                                <td><?php echo $row["cust_fname"]; ?></td>
+                                <td><?php echo $row["cust_lname"]; ?></td>
+                                <td> <?php echo $row["phone"]; ?></td>
+                                <td> <?php echo $row["email"]; ?></td>
+                                <td> <?php echo $row["address"]; ?></td>
+
+
+
+
+                            </tr>
+                        <?php
+                            $i++;
+                        }
+                        ?>
+
+<html>
+
+
+<div class="col-xl-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="ms-panel">
+                                <div class="ms-panel-header">
+                                    <h6>Product </h6>
+                                </div>
+                                <div class="ms-panel-body">
+                                    <div id="imagesSlider" class="ms-image-slider carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <?php
+                                                $query = " select * from items ";
+                                                $result = mysqli_query($con, $query);
+
+                                                while ($data = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                
+                                                <img class="d-block w-100" src="./image/<?php echo $data['filename']; ?>">
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>

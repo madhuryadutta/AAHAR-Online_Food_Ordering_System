@@ -26,12 +26,12 @@ if (isset($_SESSION["admin"])) {
                     <thead>
                         <tr>
                             <th scope="col">customer ID</th>
-                            <th scope="col">customer Name</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
                             <th scope="col">Phone Number</th>
-                           
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -42,13 +42,14 @@ if (isset($_SESSION["admin"])) {
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $row["cust_id"]; ?></th>
-                                <td><?php echo $row["cust_name"]; ?></td>
+                                <td><?php echo $row["cust_fname"]; ?></td>
+                                <td><?php echo $row["cust_lname"]; ?></td>
                                 <td> <?php echo $row["phone"]; ?></td>
                                 <td> <?php echo $row["email"]; ?></td>
                                 <td> <?php echo $row["address"]; ?></td>
-                                
-                                
-                                
+
+
+
 
                             </tr>
                         <?php

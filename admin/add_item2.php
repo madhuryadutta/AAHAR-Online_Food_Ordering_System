@@ -7,12 +7,19 @@ if (isset($_SESSION["admin"])) {
 } else {
     header("location:index.php");
 }
-$sql = "SELECT * FROM `category`";
-$all_categories = mysqli_query($con, $sql);
+
 if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($con, $_POST['item_name']);
-    $id = mysqli_real_escape_string($con, $_POST['cat_id']);
-    $sql =  "INSERT INTO `items`(`item_id`,`item_name`,`item_price`,`item_desc`, `cat_id`) VALUES ('$name','$id')";
+    $item_name = $_POST['item_name'];
+    $item_price = $_POST['item_price'];
+    $item_desc = $_POST['item_desc'];
+    $sql = "INSERT INTO `items`(`item_name`, `item_price`, `item_desc`, `cat_id`,`image`) VALUES ('$item_name','$item_price','$item_desc','2','abc')";
+
+    $q = mysqli_query($con, $sql);
+    if ($q > 0) {
+        echo " Successful";
+    } else {
+        echo "Category ID Already Exist ";
+    }
 }
 ?>
 <html>
@@ -56,14 +63,15 @@ if (isset($_POST['submit'])) {
                                             <div class="input-group">
                                                 <select class="form-control" id="validationCustom22" name="category" required>
 
-                                                    <?php
-
-                                                    while ($category = mysqli_fetch_array($all_categories, MYSQLI_ASSOC)) :;
-                                                    ?>
-                                                        <option value="<?php echo $category["cat_id"]; ?>"> <?php echo $category["cat_name"]; ?> </option>
-                                                    <?php
-                                                    endwhile;
-                                                    ?>
+                                                <?php
+                                    $catsql = "SELECT * FROM `categories`"; 
+                                    $catresult = mysqli_query($con, $catsql);
+                                    while($row = mysqli_fetch_assoc($catresult)){
+                                        $catId = $row['categorieId'];
+                                        $catName = $row['categorieName'];
+                                        echo '<option value="' .$catId. '">' .$catName. '</option>';
+                                    }
+                                ?>
 
                                                 </select>
                                                 <div class="invalid-feedback">
@@ -91,14 +99,14 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-12 mb-3">
+                                        <div class="col-md-12 mb-3">
                                         <label for="validationCustom12">Item Image</label>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="validatedCustomFile">
-                                            <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
+                                            <label class="custom-file-label" for="validatedCustomFile" type="file" name="fileToUpload" for="fileToUpload">Upload Images...</label>
                                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="ms-panel-header new">

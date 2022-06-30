@@ -1,25 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 01:45 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `fos`
---
 
 -- --------------------------------------------------------
 
@@ -141,67 +120,12 @@ CREATE TABLE `order_items` (
   `order_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`username`);
 
---
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
-  ADD PRIMARY KEY (`bill_id`);
 
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`cat_id`);
+CREATE TABLE `admin` (  `username` varchar(30)  NOT NULL,  `password` varchar(30) NOT NULL)
 
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cust_id`);
+CREATE TABLE `customer` ( `cust_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, `cust_fname` varchar(30) NOT NULL,`cust_lname` varchar(30) NOT NULL, `cust_password` varchar(30) NOT NULL, `phone` int(10) NOT NULL, `email` varchar(30) NOT NULL, `address` varchar(100) NOT NULL );
 
---
--- Indexes for table `items`
---
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`item_id`),
-  ADD KEY `FK_items_category` (`cat_id`);
-
---
--- Indexes for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`s_no`),
-  ADD KEY `FK_order_items_customer` (`cust_id`),
-  ADD KEY `FK_order_items_items` (`item_id`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `items`
---
-ALTER TABLE `items`
-  ADD CONSTRAINT `FK_items_category` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`);
-
---
--- Constraints for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD CONSTRAINT `FK_order_items_customer` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`),
-  ADD CONSTRAINT `FK_order_items_items` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `category` ( `cat_id` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT, `cat_name` varchar(25) NOT NULL, `cat_description` varchar(100) NOT NULL );
+CREATE TABLE `items` ( `item_id` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT, `item_name` varchar(25) NOT NULL, `item_price` int(5) NOT NULL, `item_desc` varchar(100) NOT NULL, `cat_id` int(5) NOT NULL, FOREIGN KEY (cat_id) REFERENCES category(cat_id) );
