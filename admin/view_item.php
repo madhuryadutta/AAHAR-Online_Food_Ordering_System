@@ -28,6 +28,7 @@ if (isset($_SESSION["admin"])) {
                             <th scope="col">Image</th>
                             <th scope="col">Items ID</th>
                             <th scope="col">Items Name</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Items Description</th>
                             <th scope="col">Items Price</th>
                             <th scope="col">Edit</th>
@@ -40,9 +41,10 @@ if (isset($_SESSION["admin"])) {
 
                         ?>
                             <tr>
-                                <th><img src="../upload/<?php echo $row['image']; ?>"></th>    
+                                <th><img  src="../upload/<?php echo $row['image']; ?>"></th>    
                                 <th scope="row"><?php echo $row["item_id"]; ?></th>
                                 <td><?php echo $row["item_name"]; ?></td>
+                                <td> <?php echo $row["cat_id"]; ?></td>
                                 <td> <?php echo $row["item_desc"]; ?></td>
                                 <td> <?php echo $row["item_price"]; ?></td>
                                 <td><span class="badge badge-primary"><button><a href="update_process.php?id=<?php echo $row["cat_id"]; ?>"> update</a></button></span></td>

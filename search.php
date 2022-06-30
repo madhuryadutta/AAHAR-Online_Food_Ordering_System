@@ -24,7 +24,7 @@ $show_items = mysqli_query($con, "SELECT * FROM `items` where item_name like '%$
 
                         ?>
 								<div class="ms-card-img">
-									<img src="../../assets/img/costic/food-1.jpg" alt="card_img">
+									<img  src="upload/<?php echo $row['image']; ?> ">
 								</div>
 								<div class="ms-card-body">
 

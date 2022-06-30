@@ -145,9 +145,10 @@ if (isset($_SESSION["admin"])) {
         </div>
         <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
             <li class="ms-nav-item ms-search-form pb-0 py-0">
-                <form class="ms-form" method="post">
+                <form class="ms-form" method="post" action="../search.php">
                     <div class="ms-form-group my-0 mb-0 has-icon fs-14">
                         <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value=""> <i class="flaticon-search text-disabled"></i>
+                        
                     </div>
                 </form>
             </li>

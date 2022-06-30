@@ -20,24 +20,24 @@ if (isset($_POST['submit'])) {
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
     $item_desc = $_POST['item_desc'];
-// Code to Upload Image to Directory and Location to Database
+    $category = $_POST['category'];
+    // Code to Upload Image to Directory and Location to Database
     $output_dir = "../upload/";/* Path for file upload */
-	$RandomNum   = time();
-	$ImageName      = str_replace(' ','-',strtolower($_FILES['image']['name'][0]));
-	$ImageType      = $_FILES['image']['type'][0];
- 
-	$ImageExt = substr($ImageName, strrpos($ImageName, '.'));
-	$ImageExt       = str_replace('.','',$ImageExt);
-	$ImageName      = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
-	$NewImageName = $ImageName.'-'.$RandomNum.'.'.$ImageExt;
-    $ret[$NewImageName]= $output_dir.$NewImageName;
+    $RandomNum   = time();
+    $ImageName      = str_replace(' ', '-', strtolower($_FILES['image']['name'][0]));
+    $ImageType      = $_FILES['image']['type'][0];
+
+    $ImageExt = substr($ImageName, strrpos($ImageName, '.'));
+    $ImageExt       = str_replace('.', '', $ImageExt);
+    $ImageName      = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
+    $NewImageName = $ImageName . '-' . $RandomNum . '.' . $ImageExt;
+    $ret[$NewImageName] = $output_dir . $NewImageName;
     /* Try to create the directory if it does not exist */
-	if (!file_exists($output_dir))
-	{
-		@mkdir($output_dir, 0777);
-	}    
-    move_uploaded_file($_FILES["image"]["tmp_name"][0],$output_dir."/".$NewImageName );
-    $sql = "INSERT INTO `items`(`item_name`, `item_price`, `item_desc`, `cat_id`,`image`) VALUES ('$item_name','$item_price','$item_desc','2','$NewImageName')";
+    if (!file_exists($output_dir)) {
+        @mkdir($output_dir, 0777);
+    }
+    move_uploaded_file($_FILES["image"]["tmp_name"][0], $output_dir . "/" . $NewImageName);
+    $sql = "INSERT INTO `items`(`item_name`, `item_price`, `item_desc`, `cat_id`,`image`) VALUES ('$item_name','$item_price','$item_desc','$category','$NewImageName')";
 
     $q = mysqli_query($con, $sql);
     if ($q > 0) {
@@ -83,6 +83,27 @@ if (isset($_POST['submit'])) {
                                                 <input type="text" class="form-control" required type="text" id="item_price" name="item_price">
                                                 <div class="invalid-feedback">
                                                     Price
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom22">Select Catagory</label>
+                                            <div class="input-group">
+                                                <select class="form-control" id="validationCustom22" name="category" required>
+
+                                                    <?php
+                                                    $catsql = "SELECT * FROM `category`";
+                                                    $catresult = mysqli_query($con, $catsql);
+                                                    while ($row = mysqli_fetch_assoc($catresult)) {
+                                                        $catId = $row['cat_id'];
+                                                        $catName = $row['cat_name'];
+                                                        echo '<option value="' . $catId . '">' . $catName . '</option>';
+                                                    }
+                                                    ?>
+
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select a Catagory.
                                                 </div>
                                             </div>
                                         </div>
