@@ -1,5 +1,10 @@
 <?php
 include "dbcon.php";
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    $loggedin= true;
+    $cust_id = $_SESSION['cust_id'];
+    $username = $_SESSION['username'];
+  }
 // session_start();
 // if (isset($_SESSION["admin"])) {
 //     $name = $_SESSION["admin"];
@@ -75,27 +80,26 @@ include "dbcon.php";
                 <form class="ms-form1" method="POST" action="search.php">
                     <div class="ms-form-group my-0 mb-0 has-icon fs-14">
                         <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value=""> <i class="flaticon-search text-disabled"></i>
-                        <button  type="submit" value="submit" name="submit">Search</button>
+                        <button type="submit" value="submit" name="submit">Search</button>
                     </div>
-                   
+
                 </form>
             </li>
             <li class="ms-nav-item ms-nav-user dropdown">
-                <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="ms-user-img ms-img-round float-right" src="admin/assets/img/people/admin.png" alt="people">
+                <a href="profile.php" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="ms-user-img ms-img-round float-right" src="admin/assets/img/people/admin.png" >
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
                     <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="../logout.php"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
+                        <a class="media fs-14 p-2" href="logout.php"> <span ><i class="flaticon-shut-down mr-2"></i> Logout</span>
+                        </a>
+                        <a class="media fs-14 p-2" href="logout.php"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
                         </a>
                     </li>
                 </ul>
             </li>
         </ul>
-        <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options"> <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-        </div>
+
     </nav>
 
     <!-- </main> -->

@@ -9,7 +9,6 @@ if (isset($_SESSION["admin"])) {
 if (count($_POST) > 0) {
     mysqli_query($con, "UPDATE category set cat_id='" . $_POST['cat_id'] . "',cat_name='" . $_POST['cat_name'] . "',cat_description='" . $_POST['cat_description'] . "' WHERE cat_id='" . $_POST['cat_id'] . "';");
     $message = "Record Modified Successfully";
-    
 }
 $edit_category = mysqli_query($con, "SELECT * FROM category WHERE cat_id='" . $_GET['id'] . "'");
 $row = mysqli_fetch_array($edit_category);

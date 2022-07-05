@@ -20,7 +20,7 @@ if (isset($_SESSION["admin"])) {
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
 <main  class="body-content">
 <div class="ms-content-wrapper">
-    <h1>Welcome <?php echo $name ?> </h1>
+   
 </div>
       </main>
 

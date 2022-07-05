@@ -105,6 +105,7 @@ INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_desc`, `cat_id`
 (42, 'Allu Pitika', 100, 'Allu & Pitika', 2, 'card-8-1656538640.jpg');
 
 --
+CREATE TABLE `fos`.`fos_orders` ( `order_id` INT(10) NOT NULL , `cust_id` INT(10) NOT NULL , `amount` INT(10) NOT NULL , `date` DATE NOT NULL , `payment_mode` INT(2) NOT NULL , `status` INT(2) NOT NULL , PRIMARY KEY (`order_id`)) ENGINE = InnoDB;
 -- Indexes for dumped tables
 --
 

@@ -6,8 +6,9 @@ if (isset($_SESSION["admin"])) {
 } else {
     header("location:index.php");
 }
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +33,7 @@ if (isset($_SESSION["admin"])) {
     <!-- Page Specific CSS (Slick Slider.css) -->
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/datatables.min.css" rel="stylesheet">
-    <!-- Costic styles -->
+    <!-- styles -->
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
@@ -91,9 +92,9 @@ if (isset($_SESSION["admin"])) {
             <!-- Category end -->
             <!-- Items -->
             <li class="menu-item">
-                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-archive fs-16"></i>Items </span>
+                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product1" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-archive fs-16"></i>Items </span>
                 </a>
-                <ul id="product" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
+                <ul id="product1" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
                     <li> <a href="add_item.php">Add Items</a>
                     </li>
                     <li> <a href="view_item.php">View Items</a>
@@ -139,16 +140,16 @@ if (isset($_SESSION["admin"])) {
             <span class="ms-toggler-bar bg-primary"></span>
             <span class="ms-toggler-bar bg-primary"></span>
         </div>
-
+        <h3>Welcome To AssameseMeals <a href="../index.php"> Click Here For Customer View </a></h3>
         <div class="logo-sn logo-sm ms-d-block-sm">
-            <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/costic/costic-logo-84x41.png" alt="logo"> </a>
+            <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.php"><img src="assets/img/name.jpg" alt="logo"> </a>
         </div>
         <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
             <li class="ms-nav-item ms-search-form pb-0 py-0">
                 <form class="ms-form" method="post" action="../search.php">
                     <div class="ms-form-group my-0 mb-0 has-icon fs-14">
                         <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value=""> <i class="flaticon-search text-disabled"></i>
-                        
+
                     </div>
                 </form>
             </li>
@@ -200,7 +201,7 @@ if (isset($_SESSION["admin"])) {
     <script src="assets/js/data-tables.js">
     </script>
     <!-- Page Specific Scripts Finish -->
-    <!-- Costic core JavaScript -->
+    <!-- core JavaScript -->
     <script src="assets/js/framework.js"></script>
     <!-- Settings -->
     <script src="assets/js/settings.js"></script>

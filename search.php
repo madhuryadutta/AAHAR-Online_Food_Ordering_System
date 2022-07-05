@@ -1,53 +1,48 @@
 <?php
-include "navbar.php";
 include "dbcon.php";
+include "navbar.php";
 $search = $_POST['search'];
-// $sql = " SELECT * FROM items where item_name like '%$search%'";
-$show_items = mysqli_query($con, "SELECT * FROM `items` where item_name like '%$search%'");
-
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+</head>
 
 <body>
-	<main class="body-content">
-		<div class="ms-content-wrapper">
-
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="row">
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-							<div class="ms-card">
-							<?php
-                        $i = 0;
-                        while ($row = mysqli_fetch_array($show_items)) {
-
-                        ?>
-								<div class="ms-card-img">
-									<img  src="upload/<?php echo $row['image']; ?> ">
-								</div>
-								<div class="ms-card-body">
-
-									<div class="new">
-										<h6 class="mb-0"><?php echo $row["item_name"]; ?> </h6>
-										<h6 class="ms-text-primary mb-0"><?php echo $row["item_price"]; ?></h6>
-									</div>
-									<!-- <div class="new meta">
-										<p>Qty:1467 </p>
-										<span class="badge badge-success">In Stock</span>
-									</div> -->
-									<p><?php echo $row["item_desc"]; ?></p>
-									<div class="new mb-0">
-										<button type="button" class="btn grid-btn mt-0 btn-sm btn-primary">Add To Cart</button>
-										
-									</div>
-								</div>
-								<?php
-                            $i++;
-                        }
-                        ?>
-							</div>
-						</div>
+  
+    <div class="container my-3" id="cont">
+        
+        <div class="row">
+        <?php
+    
+        $show_items = mysqli_query($con, "SELECT * FROM `items` where item_name like '%$search%'");
+            while($row = mysqli_fetch_assoc($show_items)){
+               
+                $item_id = $row['item_id'];
+                $item_name = $row['item_name'];
+                $item_price = $row['item_price'];
+                $item_desc = $row['item_desc'];
+                $image = $row['image'];
+            
+                echo '<div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 14rem;">
+                            <img src="upload/'.$image.'" class="card-img-top"  width="249px" height="270px">
+                            <div class="card-body">
+                                <h5 class="card-title">' . substr($item_name, 0, 20). '...</h5>
+                                <h6 style="color: #ff0000">Rs. '.$item_price. '/-</h6>
+                                <p class="card-text">' . substr($item_desc, 0, 29). '...</p>   
+                                <div class="row justify-content-center">';
+                                
+                            echo '</form>                            
+                                <a href="viewPizza.php?pizzaid=' . $item_id . '" class="mx-2"><button class="btn btn-primary">Quick View</button></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+            }?>
 </body>
-
 </html>

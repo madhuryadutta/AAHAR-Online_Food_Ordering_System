@@ -47,7 +47,7 @@ if (isset($_SESSION["admin"])) {
                                 <td> <?php echo $row["cat_id"]; ?></td>
                                 <td> <?php echo $row["item_desc"]; ?></td>
                                 <td> <?php echo $row["item_price"]; ?></td>
-                                <td><span class="badge badge-primary"><button><a href="update_process.php?id=<?php echo $row["cat_id"]; ?>"> update</a></button></span></td>
+                                <td><span class="badge badge-primary"><button><a href="update_item.php?id=<?php echo $row["item_id"]; ?>"> Manage</a></button></span></td>
 
                             </tr>
                         <?php

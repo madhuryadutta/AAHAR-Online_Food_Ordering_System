@@ -7,15 +7,7 @@ if (isset($_SESSION["admin"])) {
 } else {
     header("location:index.php");
 }
-// $sql = "SELECT * FROM `category`";
-// $all_categories = mysqli_query($con,$sql);
-// if (isset($_POST['submit'])) 
-// {
-//     $name = mysqli_real_escape_string($con,$_POST['item_name']); 
-//      $id = mysqli_real_escape_string($con,$_POST['cat_id']); 
-//     $sql =  "INSERT INTO `items`(`item_id`,`item_name`,`item_price`,`item_desc`, `cat_id`) VALUES ('$name','$id')";
 
-// }
 if (isset($_POST['submit'])) {
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
