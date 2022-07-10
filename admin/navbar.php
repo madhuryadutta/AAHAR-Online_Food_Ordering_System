@@ -94,7 +94,7 @@ if (isset($_SESSION["admin"])) {
             <li class="menu-item">
                 <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product1" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-archive fs-16"></i>Items </span>
                 </a>
-                <ul id="product1" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
+                <ul id="product1" class="collapse" aria-labelledby="product1" data-parent="#side-nav-accordion">
                     <li> <a href="add_item.php">Add Items</a>
                     </li>
                     <li> <a href="view_item.php">View Items</a>
@@ -111,12 +111,7 @@ if (isset($_SESSION["admin"])) {
             </li>
             <!-- orders end -->
 
-            <!-- Invoice -->
-            <li class="menu-item">
-                <a href="invoice.php"> <span><i class="fas fa-file-invoice fs-16"></i>invoices </span>
-                </a>
-
-            </li>
+            
             <!-- Invoice end -->
             <!-- customers-->
             <li class="menu-item">

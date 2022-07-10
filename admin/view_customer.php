@@ -46,7 +46,7 @@ if (isset($_SESSION["admin"])) {
                                 <td><?php echo $row["cust_lname"]; ?></td>
                                 <td> <?php echo $row["phone"]; ?></td>
                                 <td> <?php echo $row["email"]; ?></td>
-                                <td> <?php echo $row["address"]; ?></td>
+                                <td> <?php echo substr($row["address"], 0, 25); ?></td>
 
 
 
