@@ -70,18 +70,18 @@ if (isset($_SESSION["admin"])) {
               <div class="mb-3">
                 <label for="validationCustom08">Username</label>
                 <div class="input-group">
-                  <input type="text" class="form-control"  placeholder="username" required="" name="username" type="text" id="username">
+                  <input type="text" class="form-control" placeholder="username" required="" name="username" type="text" id="username">
                   <div class="invalid-feedback">Please provide Admin username.</div>
                 </div>
               </div>
               <div class="mb-2">
                 <label for="validationCustom09">Password</label>
                 <div class="input-group">
-                  <input type="password" class="form-control"  placeholder="Password" required="" type="password" id="password" name="password">
+                  <input type="password" class="form-control" placeholder="Password" required="" type="password" id="password" name="password">
                   <div class="invalid-feedback">Please provide a password.</div>
                 </div>
               </div>
-         
+
               <button class="btn btn-primary mt-4 d-block w-100" type="submit" name="login" value="Log-In">Sign In</button>
 
             </form>
@@ -95,14 +95,25 @@ if (isset($_SESSION["admin"])) {
               if ($row > 0) {
                 if ($row['password'] == $password) {
                   $_SESSION["admin"] = $row['username'];
-                  header("location:dashboard.php");
+                  echo "<script>
+                  alert('Login Sucessful');
+                  window.location.href='dashboard.php';
+                  </script>";
+                } else {
+                  echo "<script>
+                    alert('Wrong Password');
+                
+                    </script>";
                 }
+              } else {
+
+                echo '<script>alert("User Not Found")</script>';
               }
-            } else
-              // echo '<script>alert("Wrong Password")</script>';
+            }
+
             ?>
 
-            <!-- <div class="alert alert-danger font-italic">Wrong password</div> -->
+
 
 
 

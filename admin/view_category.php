@@ -29,6 +29,7 @@ if (isset($_SESSION["admin"])) {
                             <th scope="col">Category Name</th>
                             <th scope="col">Category Description</th>
                             <th scope="col">Edit</th>
+                            <th scope="col">delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@ if (isset($_SESSION["admin"])) {
                                 <td><?php echo $row["cat_name"]; ?></td>
                                 <td> <?php echo $row["cat_description"]; ?></td>
                                 <td><span class="badge badge-primary"><button><a href="update_category.php?id=<?php echo $row["cat_id"]; ?>"> update</a></button></span></td>
+                                <td><span class="badge badge-secondary"><button><a href="delete_category.php?id=<?php echo $row["cat_id"]; ?>"> delete</a></button></span></td>
 
                             </tr>
                         <?php

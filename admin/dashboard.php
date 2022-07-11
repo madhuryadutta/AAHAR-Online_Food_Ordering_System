@@ -1,7 +1,7 @@
 <?php
 include "../dbcon.php";
 include "navbar.php";
-$view_orders = mysqli_query($con, "SELECT * FROM `ORDERS` WHERE status=1 OR status=2 OR status=3;");
+$view_orders = mysqli_query($con, "SELECT * FROM `ORDERS`  WHERE status=1 OR status=2 OR status=3;");
 $customer = mysqli_query($con, "SELECT cust_id FROM `customer`");
 $count_customer = mysqli_num_rows($customer);
 $items = mysqli_query($con, "SELECT item_id FROM `items`");
@@ -84,24 +84,28 @@ if (isset($_SESSION["admin"])) {
           <div class="col-12">
             <div class="ms-panel">
               <div class="ms-panel-header">
-                <h6> Order List</h6>
-              </div>
-              <div class="ms-panel-body">
+              <h6> Order</h6>
+                                </div>
+                                <div class="ms-panel-body">
 
-                <div class="table-responsive">
-                  <table class="table table-hover thead-primary">
-                    <thead>
-                      <tr>
-                        <th scope="col">Order ID</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Order Status</th>
-                        <th scope="col">Delivered Time</th>
-                        <th scope="col">Payment Mode</th>
-                        <th scope="col">Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover thead-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Order ID</th>
+                                                    <!-- <th scope="col">Order Name</th> -->
+                                                    <th scope="col">Customer Name</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Order Status</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Payment Mode</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">View Bill</th>
+                                                    <th scope="col">Change Status</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                 <?php
                                                 $i = 0;
                                                 while ($row = mysqli_fetch_assoc($view_orders)) {
@@ -119,7 +123,7 @@ if (isset($_SESSION["admin"])) {
                                                         <td><span class="badge badge-success">
                                                                 <?php
                                                                 if ($row["status"] == 1) {
-                                                                    $status = "Order Place";
+                                                                    $status = "Preparing Order";
                                                                 }
                                                                 if ($row["status"] == 2) {
                                                                     $status = "Order Receive";
@@ -144,6 +148,8 @@ if (isset($_SESSION["admin"])) {
                                                         }
                                                             echo $pay_mode; ?></span></td>
                                                         <td><?php echo $row["amount"]; ?></td>
+                                                        <td><span class="badge badge-primary"><button><a href="invoice.php?id=<?php echo $row["order_id"]; ?>"> View Bill</a></button></span></td>
+                                                        <td><span class="badge badge-secondary"><button><a href="order_status.php?id=<?php echo $row["order_id"]; ?>"> Change Status</a></button></span></td>
 
                                                     <?php
                                                     $i++;

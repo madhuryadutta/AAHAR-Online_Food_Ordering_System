@@ -8,7 +8,10 @@ if (isset($_SESSION["admin"])) {
 }
 if (count($_POST) > 0) {
     mysqli_query($con, "UPDATE category set cat_id='" . $_POST['cat_id'] . "',cat_name='" . $_POST['cat_name'] . "',cat_description='" . $_POST['cat_description'] . "' WHERE cat_id='" . $_POST['cat_id'] . "';");
-    $message = "Record Modified Successfully";
+    echo "<script>
+                      alert('Category Updated Successfully');
+                      window.location.href='view_category.php';
+                      </script>";
 }
 $edit_category = mysqli_query($con, "SELECT * FROM category WHERE cat_id='" . $_GET['id'] . "'");
 $row = mysqli_fetch_array($edit_category);
@@ -67,13 +70,7 @@ $row = mysqli_fetch_array($edit_category);
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-12 mb-3">
-                    <label for="validationCustom12">Product Image</label>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="validatedCustomFile">
-                      <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                      <div class="invalid-feedback">Example invalid custom file feedback</div>
-                    </div> -->
+                   
                                 </div>
                                 <div class="ms-panel-header new">
                                     <button class="btn btn-secondary d-block" type="submit" value="Register" name="submit">Save</button>

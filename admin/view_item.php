@@ -1,7 +1,7 @@
 <?php
 include "../dbcon.php";
 include "navbar.php";
-$view_items = mysqli_query($con, "SELECT * FROM `items`");
+$view_items = mysqli_query($con, "SELECT * FROM `items` WHERE NOT availability =0");
 if (isset($_SESSION["admin"])) {
     $name = $_SESSION["admin"];
 } else {
@@ -32,6 +32,8 @@ if (isset($_SESSION["admin"])) {
                             <th scope="col">Items Description</th>
                             <th scope="col">Items Price</th>
                             <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +50,7 @@ if (isset($_SESSION["admin"])) {
                                 <td> <?php echo substr( $row["item_desc"], 0, 25); ?></td>
                                 <td> <?php echo $row["item_price"]; ?></td>
                                 <td><span class="badge badge-primary"><button><a href="update_item.php?id=<?php echo $row["item_id"]; ?>"> Manage</a></button></span></td>
-
+                                <td><span class="badge badge-secondary"><button><a href="delete_item.php?id=<?php echo $row["item_id"]; ?>"> delete</a></button></span></td>
                             </tr>
                         <?php
                             $i++;

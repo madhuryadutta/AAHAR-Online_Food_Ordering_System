@@ -1,7 +1,7 @@
 <?php
 include "../dbcon.php";
 include "navbar.php";
-$view_orders = mysqli_query($con, "SELECT * FROM `ORDERS`");
+$view_orders = mysqli_query($con, "SELECT * FROM `ORDERS` order by date DESC");
 if (isset($_SESSION["admin"])) {
     $name = $_SESSION["admin"];
 } else {
@@ -35,7 +35,7 @@ if (isset($_SESSION["admin"])) {
                         <div class="col-12">
                             <div class="ms-panel">
                                 <div class="ms-panel-header">
-                                    <h6> Order List</h6>
+                                    <h6> Order</h6>
                                 </div>
                                 <div class="ms-panel-body">
 
@@ -51,6 +51,8 @@ if (isset($_SESSION["admin"])) {
                                                     <th scope="col">Date</th>
                                                     <th scope="col">Payment Mode</th>
                                                     <th scope="col">Price</th>
+                                                    <th scope="col">View Bill</th>
+                                                    <th scope="col">Change Status</th>
 
                                                 </tr>
                                             </thead>
@@ -72,7 +74,7 @@ if (isset($_SESSION["admin"])) {
                                                         <td><span class="badge badge-success">
                                                                 <?php
                                                                 if ($row["status"] == 1) {
-                                                                    $status = "Order Place";
+                                                                    $status = "Preparing Order";
                                                                 }
                                                                 if ($row["status"] == 2) {
                                                                     $status = "Order Receive";
@@ -97,6 +99,8 @@ if (isset($_SESSION["admin"])) {
                                                         }
                                                             echo $pay_mode; ?></span></td>
                                                         <td><?php echo $row["amount"]; ?></td>
+                                                        <td><span class="badge badge-primary"><button><a href="invoice.php?id=<?php echo $row["order_id"]; ?>"> View Bill</a></button></span></td>
+                                                        <td><span class="badge badge-secondary"><button><a href="order_status.php?id=<?php echo $row["order_id"]; ?>"> Change Status</a></button></span></td>
 
                                                     <?php
                                                     $i++;

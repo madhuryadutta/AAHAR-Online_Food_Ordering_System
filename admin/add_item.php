@@ -33,11 +33,15 @@ if (isset($_POST['submit'])) {
 
     $q = mysqli_query($con, $sql);
     if ($q > 0) {
-        echo " Successful";
+        echo "<script>
+                      alert('Item Added Successfully');
+                      window.location.href='view_item.php';
+                      </script>";
     } else {
-        echo "Category ID Already Exist ";
+        echo '<script>alert("Something Went Error")</script>';
     }
 }
+
 ?>
 <html>
 
