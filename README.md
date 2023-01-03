@@ -1,6 +1,6 @@
 # Food-Ordering-System
 
-Mini Project Using Php & MySQL as backend 
+##Mini Project Using Php & MySQL as backend 
 
 ## Objectives:
 Provides the searching facilities based on Item name
