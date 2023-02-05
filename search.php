@@ -1,6 +1,6 @@
 <?php
 include "dbcon.php";
-include "navbar.php";
+
 $search = $_POST['search'];
 ?>
 <!DOCTYPE html>
@@ -13,6 +13,10 @@ $search = $_POST['search'];
 </head>
 
 <body>
+    <?php 
+    require 'comps/nav.php';
+
+    ?>
   
     <div class="container my-3" id="cont">
         
@@ -30,7 +34,7 @@ $search = $_POST['search'];
             
                 echo '<div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="card" style="width: 14rem;">
-                            <img src="upload/'.$image.'" class="card-img-top"  width="249px" height="270px">
+                            <img src="img/featured/'.$image.'" class="card-img-top"  width="249px" height="270px">
                             <div class="card-body">
                                 <h5 class="card-title">' . substr($item_name, 0, 20). '...</h5>
                                 <h6 style="color: #ff0000">Rs. '.$item_price. '/-</h6>

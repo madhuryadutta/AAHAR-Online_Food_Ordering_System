@@ -1,5 +1,7 @@
 <?php
 include "dbcon.php";
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +62,7 @@ include "dbcon.php";
         </div>
         <div class="ms-auth-col">
           <div class="ms-auth-form">
-            <form action="login_action.php" method="POST" class="needs-validation" novalidate="">
+            <form action="" method="POST" class="needs-validation" novalidate="">
               <h3>Login to Account</h3>
               <p>Please enter your username and password to continue</p>
               <div class="mb-3">
@@ -79,9 +81,30 @@ include "dbcon.php";
               </div>
          
               <button class="btn btn-primary mt-4 d-block w-100" type="submit" name="login" value="Log-In">Sign In</button>
-
+              <p class="text-center mt-3 mb-0">Create a new <a href="register.php" >account</a></p>
             </form>
-            
+            <?php
+            if (isset($_POST['login'])) {
+              $username = $_POST['username'];
+              $password = $_POST['password'];
+              $qry = "SELECT * FROM `customer` WHERE `email` = '$username' ";
+              $rslt = mysqli_query($con, $qry);
+              $row = mysqli_fetch_array($rslt, MYSQLI_ASSOC);
+              if ($row > 0) {
+                if ($row['cust_password'] == $password) {
+                  $_SESSION['username']=$_POST['username'];
+                  $_SESSION['name']=$row['cust_fname'];
+                  $_SESSION['usr_id']=$row['cust_id'];
+                  header("location:index.php");
+                }
+              }
+            } else
+              // echo '<script>alert("Wrong Password")</script>';
+            ?>
+
+            <!-- <div class="alert alert-danger font-italic">Wrong password</div> -->
+
+
 
           </div>
         </div>
