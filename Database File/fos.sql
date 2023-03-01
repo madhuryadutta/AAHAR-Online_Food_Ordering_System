@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 11:05 AM
+-- Generation Time: Mar 01, 2023 at 10:34 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -56,9 +56,14 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'Soft Drink', 'abcd'),
-(2, 'Juice', 'aaaaaaaaaaa'),
-(3, 'Milk', 'ABCdddddd');
+(10, 'Main Course', 'The  biggest dish on a menu. The main ingredient is often meat or fish. It most often follows an app'),
+(11, 'Starter', 'Starters are complex yeast-based ingredients that make bread products rise. '),
+(12, 'Biryani', 'an Indian dish of meat, fish, or vegetables cooked with rice flavored especially with saffron or tur'),
+(13, 'Thali', ' Vegetarian and Meat Thalis (Combo Type meals), along with other dishes. '),
+(14, 'PANEER MAIN COURSE', 'Paneer Butter Masala.\r\nKadai Paneer. \r\n'),
+(15, 'Breakfast', 'Breakfast is the first meal of the day'),
+(16, 'Meals', 'Others'),
+(17, 'Rice', '.');
 
 -- --------------------------------------------------------
 
@@ -81,9 +86,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_fname`, `cust_lname`, `cust_password`, `email`, `phone`, `address`) VALUES
-(1, 'Madhurya', 'Dutta', 'alphabeta', '', 2147483647, 'Lakhimpur, Assam'),
-(2, 'Madhurya', 'Dutta', 'a', 'a@a.com', 2147483647, 'aaaa'),
-(3, 'Madhurya', 'Dutta', 'qwert', 'Iam@dutta.com', 2147483647, 'aaaaaaaaaa');
+(11, 'Ani', 'dewana', '123456', 'ani@gmail.com', 2147483647, 'Hospital Road, Kaimanj , 748710');
 
 -- --------------------------------------------------------
 
@@ -97,35 +100,25 @@ CREATE TABLE `items` (
   `item_price` int(5) NOT NULL,
   `item_desc` varchar(255) NOT NULL,
   `cat_id` int(5) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `availability` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_desc`, `cat_id`, `image`) VALUES
-(42, 'Allu Pitika', 100, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 2, 'card-8-1656538640.jpg'),
-(43, 'Anirban', 101, 'Test', 2, 'card-5-1656555065.jpg'),
-(44, 'Allu Pitika11', 100, 'Allu & Pitika', 3, 'card-8-1656556627.jpg'),
-(45, '1', 1, 'ssssssssss', 1, 'cart-1656556688.svg'),
-(46, 'aaa', 111, 'dssssssssssa', 3, 'screenshot-(1)-1656630144.png'),
-(47, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(48, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(49, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(50, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(51, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(52, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(53, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(54, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(55, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(56, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(57, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(58, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(59, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(60, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(61, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n'),
-(62, 'pizzaaaa', 1, 'dddddd', 1, 'screenshot-(1)-1656630144.png\r\n');
+INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_desc`, `cat_id`, `image`, `availability`) VALUES
+(67, 'Okhomiya Chicken Thali', 135, 'The platter includes rice, yellow Daal, Chicken curry cooked in home-style assamese curry with 2 pieces delicious and fresh chicken, dry sabji with home grown vegetables such as koldil, bhendi, gazor etc. and salad.', 12, '48f2e4e32b1e55ca2ae7d1a860c920f4-1657582926.jpg', 1),
+(68, 'Okhomiya Fish Thali', 145, 'The platter includes rice, yellow Daal, 1 piece of Fish curry cooked in home-style Assamese curry and dry sabji with home grown vegetables such as koldil, bhendi, gazor etc. and salad.', 13, '7f357c703f006969390f42f39c7d86c4-1657583209.avif', 1),
+(70, 'Okhomiya Egg Thali', 130, 'The platter includes rice, yellow Daal, 1 egg curry cooked in home-style Assamese curry and dry sabji with home grown vegetables such as koldil, bhendi, gazor etc. and salad.', 13, 'aa-1657583375.jpg', 1),
+(71, 'Chicken Dry Fry', 250, 'Chicken dry fry is a slightly roasted chicken Half with 5pcs and Full with 10pcs', 11, 'ssss-1657583441.jpg', 1),
+(72, 'Amazing Chicken 65', 250, 'Chicken 65 is a spicy, deep-fried Indian chicken dish which is served as an appetizer or entrée. ', 11, 'aaaaaaa-1657583523.jpg', 1),
+(73, 'Plain Dal', 98, 'Dal', 10, 'aaaaa-1657583618.jpg', 1),
+(74, 'Aloo Paneer', 220, 'আলু আৰু মটৰৰ লগত পনীৰ)', 10, 'aaaaaaaaaaaaaaaaaaaaaaaaaa-1657583673.jpg', 1),
+(75, 'Paneer Butter Masala', 250, 'Diced cottage cheese prepared in the gravy containing butter, tomatoes, onions, cashews and cream accompanied by delicious Indian spices.', 10, '10101-1657583761.jpg', 1),
+(76, 'Ethnic Til Chicken', 224, 'An ethnic Assamese Cuisine in which the Chicken is cooked with sesame seeds along with onions, flavoured with ginger,', 10, '6e8df8afa74da2af69c647ffa17ad3a1-1657583818.jpg', 1),
+(77, 'Veg Pulao', 100, 'How do you describe pulao? Pulao is a rice dish, cooked in seasoned broth with rice, meat, and an array of spices including: coriander seeds, cumin, cardamom, cloves and others.', 17, '431242434-1657584014.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -142,6 +135,16 @@ CREATE TABLE `orders` (
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `cust_id`, `amount`, `date`, `payment_mode`, `status`) VALUES
+(242651524, 11, 714, '2022-07-12', 1, 2),
+(799430138, 11, 609, '2022-07-12', 1, 2),
+(1200985891, 11, 431, '2022-07-12', 2, 3),
+(1675790716, 11, 851, '2022-07-12', 2, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -155,6 +158,20 @@ CREATE TABLE `order_items` (
   `item_id` int(10) NOT NULL,
   `quantity` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`oi_id`, `order_id`, `cust_id`, `item_id`, `quantity`) VALUES
+(25, 1200985891, 11, 67, 1),
+(26, 1200985891, 11, 68, 1),
+(27, 1200985891, 11, 70, 1),
+(32, 799430138, 11, 68, 4),
+(33, 1675790716, 11, 67, 6),
+(34, 242651524, 11, 67, 3),
+(35, 242651524, 11, 68, 1),
+(36, 242651524, 11, 70, 1);
 
 --
 -- Indexes for dumped tables
@@ -204,25 +221,25 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cat_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cust_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `oi_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `oi_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
